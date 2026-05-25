@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evoki — Stay sharp. Stay connected. Stay you.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Pitch deck palette — warm ivory + teal + blush */
+  --bg:        #F7F4EF;
+  --bg-warm:   #EDE8DF;
+  --dark:      #1C1C1E;
+  --teal:      #4A8F7F;
+  --teal-light:#D4EBE5;
+  --teal-mid:  #6EC5A8;
+  --rose:      #C97E6E;
+  --rose-light:#F5E0DA;
+  --gold:      #C4933A;
+  --gold-light:#F5E9D4;
+  --muted:     #7A7770;
+  --border:    rgba(60,55,50,0.12);
+  --serif:     'Cormorant Garamond', Georgia, serif;
+  --sans:      'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 56px;
+  background: rgba(247,244,239,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 26px; font-weight: 600;
+  color: var(--dark); letter-spacing: 0.01em;
+}
+.nav-badge {
+  font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--dark); color: white;
+  border: none; border-radius: 100px;
+  padding: 11px 26px;
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.04em; cursor: pointer;
+  text-decoration: none; transition: all 0.25s ease;
+}
+.nav-cta:hover { background: var(--teal); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 120px 56px 80px;
+  position: relative; gap: 64px;
+}
+.hero-bg-blob {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden;
+}
+.hero-bg-blob::before {
+  content: '';
+  position: absolute; top: -10%; right: -5%;
+  width: 55vw; height: 90vh;
+  background: radial-gradient(ellipse at center, var(--teal-light) 0%, transparent 70%);
+  border-radius: 40% 60% 55% 45%;
+  opacity: 0.5;
+}
+.hero-bg-blob::after {
+  content: '';
+  position: absolute; bottom: 5%; left: -8%;
+  width: 35vw; height: 40vh;
+  background: radial-gradient(ellipse at center, var(--rose-light) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.hero-left { position: relative; z-index: 1; }
+.hero-right { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 28px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 28px; height: 1px; background: var(--teal);
+}
+
+h1.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(64px, 7vw, 104px);
+  font-weight: 300; line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+h1.hero-title em {
+  font-style: italic; font-weight: 300;
+  color: var(--teal);
+}
+.hero-tagline {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  font-style: italic; font-weight: 300;
+  color: var(--muted); margin-bottom: 32px;
+  line-height: 1.4;
+}
+.hero-sub {
+  font-size: 16px; font-weight: 300; line-height: 1.75;
+  color: var(--muted); max-width: 440px; margin-bottom: 48px;
+}
+
+/* FORM */
+.form-row {
+  display: flex; flex-direction: column; gap: 12px;
+  max-width: 440px;
+}
+.form-row input {
+  width: 100%; height: 52px; border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  padding: 0 20px;
+  font-family: var(--sans); font-size: 14px; color: var(--dark);
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-row input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(74,143,127,0.12);
+}
+.form-row input::placeholder { color: rgba(122,119,112,0.6); }
+.btn-primary {
+  height: 52px; border-radius: 12px;
+  background: var(--dark); color: white;
+  border: none; padding: 0 28px;
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.04em; cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--teal); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,143,127,0.3); }
+.form-note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* Role toggle */
+.role-toggle {
+  display: flex; gap: 8px;
+}
+.role-btn {
+  flex: 1; height: 46px; border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: rgba(255,255,255,0.6);
+  font-family: var(--sans); font-size: 13px; font-weight: 400;
+  color: var(--muted); cursor: pointer;
+  transition: all 0.2s ease;
+}
+.role-btn:hover { border-color: var(--teal); color: var(--teal); }
+.role-btn.active {
+  border-color: var(--teal); background: var(--teal-light);
+  color: var(--teal); font-weight: 500;
+}
+.role-toggle-light .role-btn {
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+}
+.role-toggle-light .role-btn:hover {
+  border-color: rgba(255,255,255,0.7); color: white;
+}
+.role-toggle-light .role-btn.active {
+  border-color: white; background: rgba(255,255,255,0.25); color: white;
+}
+.success-msg {
+  display: none;
+  background: var(--teal-light);
+  border: 1px solid rgba(74,143,127,0.2);
+  border-radius: 12px; padding: 18px 24px;
+  color: var(--teal); font-size: 15px; font-weight: 400;
+  font-family: var(--serif); font-style: italic;
+}
+
+/* HERO RIGHT — app preview cards */
+.app-preview {
+  display: flex; flex-direction: column; gap: 14px;
+  padding: 20px 0;
+}
+.preview-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+.preview-card:hover { transform: translateX(-6px); }
+.preview-card-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+}
+.preview-icon {
+  width: 38px; height: 38px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.preview-card:nth-child(1) .preview-icon { background: var(--teal-light); }
+.preview-card:nth-child(2) .preview-icon { background: var(--rose-light); }
+.preview-card:nth-child(3) .preview-icon { background: var(--gold-light); }
+.preview-card-title {
+  font-family: var(--serif); font-size: 17px; font-weight: 600;
+  color: var(--dark);
+}
+.preview-card-sub { font-size: 13px; color: var(--muted); font-weight: 300; margin-top: 2px; }
+.preview-card-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.preview-why {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--teal);
+  margin-top: 10px; border-top: 1px solid var(--border);
+  padding-top: 10px; width: 100%;
+}
+
+/* ── MANIFESTO ── */
+.manifesto {
+  background: var(--dark); color: white;
+  padding: 100px 56px;
+  position: relative; overflow: hidden;
+}
+.manifesto::before {
+  content: '';
+  position: absolute; top: -30%; right: -10%;
+  width: 50vw; height: 80vh;
+  background: radial-gradient(ellipse, rgba(74,143,127,0.2) 0%, transparent 65%);
+  border-radius: 50%;
+}
+.manifesto-inner {
+  max-width: 1100px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.manifesto-label {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--teal-mid); margin-bottom: 48px;
+  display: flex; align-items: center; gap: 12px;
+}
+.manifesto-label::before { content: ''; width: 28px; height: 1px; background: var(--teal-mid); }
+.manifesto-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: start;
+}
+.manifesto-headline {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 300; line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.manifesto-headline em { font-style: italic; color: var(--teal-mid); }
+.manifesto-right { padding-top: 12px; }
+.principle {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.principle:last-child { border-bottom: none; }
+.principle-num {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-bottom: 8px;
+}
+.principle-title {
+  font-family: var(--serif); font-size: 22px; font-weight: 400;
+  color: white; margin-bottom: 8px;
+}
+.principle-desc {
+  font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+}
+
+/* ── STATS ── */
+.stats-band {
+  background: var(--bg-warm);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 64px 56px;
+}
+.stats-band-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 0;
+}
+.stat-item {
+  text-align: center; padding: 0 40px;
+  position: relative;
+}
+.stat-item + .stat-item::before {
+  content: ''; position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%);
+  height: 60px; width: 1px; background: var(--border);
+}
+.stat-num {
+  font-family: var(--serif);
+  font-size: 64px; font-weight: 300;
+  color: var(--teal); line-height: 1; margin-bottom: 10px;
+  letter-spacing: -0.03em;
+}
+.stat-label {
+  font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.5;
+}
+.stat-source {
+  font-size: 10px; color: rgba(122,119,112,0.6); margin-top: 6px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+/* ── FEATURES DETAIL ── */
+.features {
+  padding: 100px 56px;
+  max-width: 1200px; margin: 0 auto;
+}
+.section-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--rose);
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+}
+.section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rose); }
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--dark); margin-bottom: 64px;
+  max-width: 520px;
+}
+.features-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 28px;
+}
+.feat-card {
+  background: white;
+  border-radius: 24px; padding: 36px 32px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  display: flex; flex-direction: column;
+}
+.feat-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.08); transform: translateY(-4px); }
+.feat-tag {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; padding: 5px 12px; border-radius: 100px;
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-bottom: 24px; align-self: flex-start;
+}
+.feat-card:nth-child(1) .feat-tag { background: var(--teal-light); color: var(--teal); }
+.feat-card:nth-child(2) .feat-tag { background: var(--teal-light); color: var(--teal); }
+.feat-card:nth-child(3) .feat-tag { background: var(--rose-light); color: var(--rose); }
+.feat-card:nth-child(4) .feat-tag { background: var(--rose-light); color: var(--rose); }
+.feat-card:nth-child(5) .feat-tag { background: var(--gold-light); color: var(--gold); }
+.feat-card:nth-child(6) .feat-tag { background: var(--gold-light); color: var(--gold); }
+.feat-icon { font-size: 28px; margin-bottom: 16px; }
+.feat-title {
+  font-family: var(--serif); font-size: 22px; font-weight: 400;
+  color: var(--dark); margin-bottom: 12px; line-height: 1.2;
+}
+.feat-desc {
+  font-size: 14px; font-weight: 300; color: var(--muted);
+  line-height: 1.75; flex: 1;
+}
+
+/* ── TWO ROLES ── */
+.two-roles {
+  background: var(--bg-warm);
+  padding: 100px 56px;
+  border-top: 1px solid var(--border);
+}
+.two-roles-inner { max-width: 1100px; margin: 0 auto; }
+.roles-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 64px;
+}
+.role-card {
+  background: white; border-radius: 28px; padding: 44px 40px;
+  border: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.role-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+}
+.role-card.senior::before { background: linear-gradient(90deg, var(--teal), var(--teal-mid)); }
+.role-card.family::before { background: linear-gradient(90deg, var(--rose), #e8a090); }
+.role-persona {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.role-persona::before {
+  content: '';
+  width: 8px; height: 8px; border-radius: 50%;
+}
+.senior .role-persona::before { background: var(--teal); }
+.family .role-persona::before { background: var(--rose); }
+.role-title {
+  font-family: var(--serif); font-size: 32px; font-weight: 400;
+  line-height: 1.15; margin-bottom: 20px; color: var(--dark);
+}
+.role-subtitle {
+  font-size: 14px; font-weight: 300; color: var(--muted);
+  line-height: 1.6; margin-bottom: 28px;
+}
+.role-features { display: flex; flex-direction: column; gap: 10px; }
+.role-feature {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13px; font-weight: 300; color: var(--dark); line-height: 1.5;
+}
+.role-feature::before {
+  content: '→'; font-size: 13px; flex-shrink: 0; margin-top: 1px;
+}
+.senior .role-feature::before { color: var(--teal); }
+.family .role-feature::before { color: var(--rose); }
+
+/* ── SCIENCE ── */
+.science {
+  padding: 100px 56px;
+  max-width: 1100px; margin: 0 auto;
+}
+.science-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center;
+}
+.science-quote {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 300; font-style: italic;
+  line-height: 1.25; color: var(--dark); margin-bottom: 32px;
+}
+.science-quote span { color: var(--teal); }
+.science-sources { display: flex; flex-direction: column; gap: 14px; }
+.science-source {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 20px; border-radius: 12px;
+  background: white; border: 1px solid var(--border);
+}
+.source-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0; margin-top: 5px;
+}
+.source-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.5; }
+.source-text strong { font-weight: 500; color: var(--dark); }
+
+/* ── FINAL CTA ── */
+.final-cta {
+  background: var(--teal);
+  padding: 100px 56px;
+  position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute; bottom: -20%; right: -5%;
+  width: 50vw; height: 100%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 65%);
+  border-radius: 50%;
+}
+.final-inner {
+  max-width: 640px; position: relative; z-index: 1;
+}
+.final-eyebrow {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.final-eyebrow::before { content: ''; width: 28px; height: 1px; background: rgba(255,255,255,0.4); }
+.final-cta h2 {
+  font-family: var(--serif);
+  font-size: clamp(44px, 6vw, 72px); font-weight: 300;
+  line-height: 1.0; color: white; margin-bottom: 20px;
+}
+.final-cta h2 em { font-style: italic; color: rgba(255,255,255,0.7); }
+.final-cta p {
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.8);
+  line-height: 1.7; margin-bottom: 40px; max-width: 480px;
+}
+.final-form { display: flex; flex-direction: column; gap: 12px; max-width: 480px; }
+.final-form input {
+  width: 100%; height: 52px; border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 0 20px;
+  font-family: var(--sans); font-size: 14px; color: white;
+  outline: none; transition: border-color 0.2s;
+}
+.final-form input::placeholder { color: rgba(255,255,255,0.5); }
+.final-form input:focus { border-color: rgba(255,255,255,0.7); }
+.btn-white {
+  height: 52px; border-radius: 12px;
+  background: white; color: var(--teal);
+  border: none; padding: 0 28px;
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.04em; cursor: pointer;
+  transition: all 0.25s ease; align-self: flex-start;
+  min-width: 200px; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
+.final-note {
+  font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 12px;
+  letter-spacing: 0.04em;
+}
+.final-success {
+  display: none;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px; padding: 20px 28px;
+  color: white; font-family: var(--serif); font-style: italic; font-size: 18px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); padding: 44px 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-logo { font-family: var(--serif); font-size: 22px; color: white; font-weight: 400; }
+.footer-tagline {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: rgba(255,255,255,0.4);
+}
+.footer-langs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.footer-langs span {
+  font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em;
+  padding: 4px 10px; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+
+/* ── SCREENSHOT SHOWCASE ── */
+.showcase {
+  padding: 100px 0 100px 56px;
+  overflow: hidden;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.showcase-inner { max-width: 1100px; margin: 0 auto 0 0; padding-right: 56px; }
+.showcase-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 56px; padding-right: 56px;
+  flex-wrap: wrap; gap: 20px;
+}
+.showcase-scroll {
+  display: flex; gap: 28px;
+  overflow-x: auto; padding-bottom: 24px; padding-right: 56px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.showcase-scroll::-webkit-scrollbar { display: none; }
+
+/* Phone frame */
+.phone-frame {
+  flex-shrink: 0; scroll-snap-align: start;
+  width: 240px;
+  background: #1C1C1E;
+  border-radius: 44px;
+  padding: 10px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 32px 64px rgba(0,0,0,0.22),
+    0 8px 24px rgba(0,0,0,0.15);
+  position: relative;
+  transition: transform 0.4s ease;
+}
+.phone-frame:hover { transform: translateY(-8px) scale(1.02); }
+.phone-notch {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 26px;
+  background: #1C1C1E; border-radius: 0 0 18px 18px;
+  z-index: 10;
+}
+.phone-screen {
+  border-radius: 36px; overflow: hidden;
+  aspect-ratio: 9/19.5;
+  background: #F7F4EF;
+  position: relative;
+}
+.phone-screen img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+  display: block;
+}
+/* Placeholder shown when src is not set */
+.phone-screen .ph {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px; padding: 20px; text-align: center;
+  background: linear-gradient(160deg, var(--teal-light) 0%, #fff 100%);
+}
+.ph-icon { font-size: 28px; }
+.ph-label { font-size: 11px; font-weight: 500; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase; }
+.ph-desc { font-size: 10px; color: var(--muted); line-height: 1.4; text-align: center; margin-top: 2px; }
+.ph-filename { font-size: 9px; color: var(--muted); font-family: monospace; background: rgba(0,0,0,0.06); padding: 3px 8px; border-radius: 4px; margin-top: 4px; }
+
+.phone-caption {
+  text-align: center; margin-top: 16px;
+  font-size: 12px; font-weight: 400; color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-left  { animation: fadeUp 1s 0.1s ease both; }
+.hero-right { animation: fadeUp 1s 0.3s ease both; }
+
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-badge { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
+  .manifesto-grid { grid-template-columns: 1fr; gap: 40px; }
+  .stats-band { padding: 48px 24px; }
+  .stats-band-inner { grid-template-columns: 1fr; gap: 32px; }
+  .stat-item + .stat-item::before { display: none; }
+  .features { padding: 64px 24px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .two-roles { padding: 64px 24px; }
+  .roles-grid { grid-template-columns: 1fr; }
+  .science { padding: 64px 24px; }
+  .science-grid { grid-template-columns: 1fr; gap: 40px; }
+  .final-cta { padding: 64px 24px; }
+  footer { padding: 32px 24px; flex-direction: column; }
+  .manifesto { padding: 64px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Evoki</div>
+  <div class="nav-badge">Coming 2026 · iOS & Android</div>
+  <a href="#join" class="nav-cta">Request Invite</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-blob"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Early Access · Limited Spots</div>
+    <h1 class="hero-title">Meet<br><em>Evoki</em></h1>
+    <p class="hero-tagline">Stay sharp. Stay connected. Stay you.</p>
+    <p class="hero-sub">A calm daily companion for cognitive wellness — designed for adults 50+, built so family can stay close without hovering. Coming 2026 on iOS & Android.</p>
+
+    <div id="hero-form">
+      <div class="form-row">
+        <input type="text" id="hero-name" placeholder="Your first name" autocomplete="given-name">
+        <input type="email" id="hero-email" placeholder="Your email address" autocomplete="email">
+        <div class="role-toggle" id="hero-role">
+          <button class="role-btn" data-role="senior" onclick="selectRole('hero','senior')">👤 I'm a senior</button>
+          <button class="role-btn" data-role="family" onclick="selectRole('hero','family')">👨‍👩‍👧 I'm a family member</button>
+        </div>
+        <button class="btn-primary" onclick="joinWaitlist('hero')">Request my invite →</button>
+      </div>
+      <p class="form-note">No spam. Just a personal invite when we're ready.</p>
+    </div>
+    <div class="success-msg" id="hero-success">
+      You're on the list. We'll reach out personally when we're ready for you.
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="app-preview">
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <div class="preview-icon">☀️</div>
+          <div>
+            <div class="preview-card-title">Good morning, Lisa</div>
+            <div class="preview-card-sub">Daily Check-In · ~1 minute</div>
+          </div>
+        </div>
+        <div class="preview-card-body">How did you sleep? How are you feeling today? Five gentle questions to start the day with clarity.</div>
+        <div class="preview-why">✦ &nbsp; Science-backed · Lancet Commission 2024</div>
+      </div>
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <div class="preview-icon">🧩</div>
+          <div>
+            <div class="preview-card-title">Today's Plan</div>
+            <div class="preview-card-sub">AI-generated · 3 activities</div>
+          </div>
+        </div>
+        <div class="preview-card-body">Brain exercise · A gentle 10-min walk · Reach out to someone. Every task shows its "why" rooted in research.</div>
+        <div class="preview-why">✦ &nbsp; No streaks. No shame. Just presence.</div>
+      </div>
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <div class="preview-icon">👨‍👩‍👧</div>
+          <div>
+            <div class="preview-card-title">How is mom?</div>
+            <div class="preview-card-sub">Family Dashboard · Sarah, 42</div>
+          </div>
+        </div>
+        <div class="preview-card-body">Mom checked in today. Mood: ok. Sleep: ok. Energy: ok. Weekly trend looks positive.</div>
+        <div class="preview-why">✦ &nbsp; Connected by an 8-character code</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto reveal">
+  <div class="manifesto-inner">
+    <div class="manifesto-label">Our design philosophy</div>
+    <div class="manifesto-grid">
+      <div class="manifesto-headline">
+        Calm.<br><em>Dignified.</em><br>Never<br>overwhelming.
+      </div>
+      <div class="manifesto-right">
+        <div class="principle">
+          <div class="principle-num">Principle 01</div>
+          <div class="principle-title">One thing at a time</div>
+          <div class="principle-desc">The screen never competes with itself. Every moment has one clear action — and the rest of the app politely steps back.</div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">Principle 02</div>
+          <div class="principle-title">No streaks. No shame.</div>
+          <div class="principle-desc">Evoki never punishes missed days. There are no fire emojis, no broken records. It simply shows up again tomorrow.</div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">Principle 03</div>
+          <div class="principle-title">Senior-first, always</div>
+          <div class="principle-desc">Large type. High contrast. Big tap targets. Designed for eyes that deserve more space, and fingers that deserve bigger targets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band reveal">
+  <div class="stats-band-inner">
+    <div class="stat-item">
+      <div class="stat-num">55M</div>
+      <div class="stat-label">people living with dementia worldwide — set to triple by 2050</div>
+      <div class="stat-source">WHO, 2023</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">40%</div>
+      <div class="stat-label">of dementia cases are potentially preventable with the right daily habits</div>
+      <div class="stat-source">Lancet Commission, 2024</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1 in 3</div>
+      <div class="stat-label">seniors reports feeling lonely at least once a week</div>
+      <div class="stat-source">Age UK</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features reveal">
+  <div class="section-eyebrow">What Evoki offers</div>
+  <h2 class="section-title">A gentle structure<br>for every day.</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-tag">For seniors</div>
+      <div class="feat-icon">☀️</div>
+      <div class="feat-title">Daily Check-In</div>
+      <div class="feat-desc">Five calm questions about mood, sleep, and energy. About one minute. Wearable auto-fill available. Never intrusive, always gentle.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-tag">For seniors</div>
+      <div class="feat-icon">🧠</div>
+      <div class="feat-title">Brain Games & Radio</div>
+      <div class="feat-desc">10 gentle cognitive games — no scores, no competition. Evoki Radio plays 3 curated channels with 50 licensed tracks for any moment.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-tag">For family</div>
+      <div class="feat-icon">📋</div>
+      <div class="feat-title">Today's Plan</div>
+      <div class="feat-desc">An AI-generated daily plan: brain exercise, movement, and a moment of connection — each with its scientific "why" explained clearly.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-tag">For family</div>
+      <div class="feat-icon">💬</div>
+      <div class="feat-title">Family Messages</div>
+      <div class="feat-desc">Send messages from the family app. AI-suggested prompts or free-write. Read before bed — a goodnight from Sarah. Connected, not hovering.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-tag">Memory & care</div>
+      <div class="feat-icon">📓</div>
+      <div class="feat-title">Memory Bank</div>
+      <div class="feat-desc">A personal journal with guided prompts. People, places, events, and routines — a living record of the things that matter most.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-tag">Memory & care</div>
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">Weekly Insights</div>
+      <div class="feat-desc">Family sees weekly check-in summaries, mood patterns, and gentle flags — shown calmly, never alarmingly. Peace of mind at a glance.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO ROLES -->
+<section class="two-roles reveal">
+  <div class="two-roles-inner">
+    <div class="section-eyebrow" style="--rose: #4A8F7F;">Two people. One connection.</div>
+    <h2 class="section-title">Designed for the<br>senior — and their family.</h2>
+    <div class="roles-grid">
+      <div class="role-card senior">
+        <div class="role-persona">Senior · Lisa, 74 · Birmingham</div>
+        <div class="role-title">Simple by default.<br>Calm every day.</div>
+        <div class="role-subtitle">Lisa opens Evoki each morning. Large type, high contrast, one clear action per screen. No learning curve, no overwhelm.</div>
+        <div class="role-features">
+          <div class="role-feature">Daily Check-In in about one minute</div>
+          <div class="role-feature">Brain games, Evoki Radio, journaling</div>
+          <div class="role-feature">AI-generated Today's Plan with "why"</div>
+          <div class="role-feature">Orange Help button always visible</div>
+          <div class="role-feature">Two modes: Just Today · Full Home</div>
+        </div>
+      </div>
+      <div class="role-card family">
+        <div class="role-persona">Family · Sarah, 42 · London</div>
+        <div class="role-title">Close, without<br>hovering.</div>
+        <div class="role-subtitle">Sarah sees a weekly summary, check-in results, and can send messages — all without disturbing mom's calm experience.</div>
+        <div class="role-features">
+          <div class="role-feature">Today tab with check-in result</div>
+          <div class="role-feature">Weekly mood summaries & trends</div>
+          <div class="role-feature">Medication & reminder management</div>
+          <div class="role-feature">AI-suggested messages to send</div>
+          <div class="role-feature">Caregiver articles + research feed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCIENCE -->
+<section class="science reveal">
+  <div class="science-grid">
+    <div>
+      <div class="section-eyebrow" style="color: var(--gold);">
+        <span style="width:28px;height:1px;background:var(--gold);display:inline-block;"></span>
+        Science-backed
+      </div>
+      <p class="science-quote">
+        "Regular cognitive engagement, social connection, and physical activity are among the strongest protectors against <span>cognitive decline.</span>"
+      </p>
+      <p style="font-size:13px;color:var(--muted);font-weight:300;">
+        Evoki is not a medical device. It is a science-informed daily habit — built on the research that matters most.
+      </p>
+    </div>
+    <div class="science-sources">
+      <div class="science-source">
+        <div class="source-dot"></div>
+        <div class="source-text"><strong>Lancet Commission 2024</strong> — 40% of dementia cases are potentially preventable through 14 modifiable risk factors.</div>
+      </div>
+      <div class="science-source">
+        <div class="source-dot"></div>
+        <div class="source-text"><strong>ACTIVE Trial</strong> — Cognitive training produces measurable benefits lasting up to 10 years after intervention.</div>
+      </div>
+      <div class="science-source">
+        <div class="source-dot"></div>
+        <div class="source-text"><strong>Reminiscence Therapy Research</strong> — Structured memory recall supports wellbeing and reduces isolation in older adults.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="join">
+  <div class="final-inner">
+    <div class="final-eyebrow">Early Access · Personal Invite</div>
+    <h2>You're<br><em>invited.</em></h2>
+    <p>We're opening early access to a small group of families. Leave your details and we'll reach out personally — no automated emails, no spam.</p>
+
+    <div id="final-form">
+      <div class="final-form">
+        <input type="text" id="final-name" placeholder="Your first name" autocomplete="given-name">
+        <input type="email" id="final-email" placeholder="Your email address" autocomplete="email">
+        <div class="role-toggle role-toggle-light" id="final-role">
+          <button class="role-btn" data-role="senior" onclick="selectRole('final','senior')">👤 I'm a senior</button>
+          <button class="role-btn" data-role="family" onclick="selectRole('final','family')">👨‍👩‍👧 I'm a family member</button>
+        </div>
+        <button class="btn-white" onclick="joinWaitlist('final')">Get my invite</button>
+      </div>
+      <p class="final-note">iOS & Android · Coming 2026 · 7 languages: EN · فارسی · ES · العربية · हिन्दी · 中文 · FR</p>
+    </div>
+    <div class="final-success" id="final-success">
+      Wonderful. We'll reach out with your personal invite soon.
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SCREENSHOTS -->
+<section class="showcase reveal">
+  <div class="showcase-header">
+    <div>
+      <div class="section-eyebrow" style="padding-left:0;">See Evoki in action</div>
+      <h2 class="section-title" style="margin-bottom:0;">Calm by design.<br>Every screen.</h2>
+    </div>
+    <p style="font-size:14px;font-weight:300;color:var(--muted);max-width:280px;line-height:1.6;">
+      Large type, high contrast, one action at a time — designed for the people who matter most.
+    </p>
+  </div>
+
+  <div class="showcase-scroll">
+
+    <!-- SCREEN 1: Just Today -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/3%20tabs%20-%20Just%20Today.png"
+               alt="Evoki Just Today mode"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">🌤️</div>
+            <div class="ph-label">Just Today · Minimal mode</div>
+            <div class="ph-desc">Some days need less. One card, one focus.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Just Today</div>
+    </div>
+
+    <!-- SCREEN 2: Full Home -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/5%20tabs%20-Full.png"
+               alt="Evoki Full Home"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">🏠</div>
+            <div class="ph-label">Full Home · Rich mode</div>
+            <div class="ph-desc">Brain games, radio, journal — the full daily rhythm.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Full Home</div>
+    </div>
+
+    <!-- SCREEN 3: Today's Plan -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/Today's%20plan.png"
+               alt="Evoki Today's Plan"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">📋</div>
+            <div class="ph-label">Today's Plan · AI-generated</div>
+            <div class="ph-desc">3 gentle activities, each with its scientific why.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Today's Plan</div>
+    </div>
+
+    <!-- SCREEN 4: Family Dashboard -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/Screenshot_20260524_130845.png"
+               alt="Family Dashboard — How is mom?"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">👨‍👩‍👧</div>
+            <div class="ph-label">Family · Today tab</div>
+            <div class="ph-desc">How is mom? Check-in results at a glance.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Family Dashboard</div>
+    </div>
+
+    <!-- SCREEN 5: Family Messages -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/Screenshot_20260524_130918.png"
+               alt="Family Messages — send encouragement"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">💌</div>
+            <div class="ph-label">Family · Messages</div>
+            <div class="ph-desc">AI-suggested messages or write your own.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Family Messages</div>
+    </div>
+
+    <!-- SCREEN 6: Evoki Radio -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/Evoki%20Radio%20Playing.png"
+               alt="Evoki Radio Playing"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">🎵</div>
+            <div class="ph-label">Evoki Radio · 3 channels</div>
+            <div class="ph-desc">Morning Calm · Energise · Wind-down.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Evoki Radio</div>
+    </div>
+
+    <!-- SCREEN 7: Memory Bank -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/Memo-people.png"
+               alt="Memory Bank — People"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">📓</div>
+            <div class="ph-label">Memory Bank · People</div>
+            <div class="ph-desc">A living record of the people who matter most.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Memory Bank</div>
+    </div>
+
+    <!-- SCREEN 8: Messages -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/Messages.png"
+               alt="Messages from family"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">💬</div>
+            <div class="ph-label">Messages · From family</div>
+            <div class="ph-desc">Read before bed — a goodnight from Sarah.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Messages</div>
+    </div>
+
+    <!-- SCREEN 9: Help Screen -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://raw.githubusercontent.com/su7ri/titil/main/apps/Evoki/SOS.png"
+               alt="Help screen — It's okay"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">
+            <div class="ph-icon">🧡</div>
+            <div class="ph-label">Help · Always one tap away</div>
+            <div class="ph-desc">It's okay. Take a slow breath. You're safe.</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">Help Screen</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Evoki</div>
+  <div class="footer-tagline">"Calm. Dignified. Never overwhelming."</div>
+  <div class="footer-langs">
+    <span>EN</span><span>فارسی</span><span>ES</span><span>العربية</span><span>हिन्दी</span><span>中文</span><span>FR</span>
+  </div>
+</footer>
+
+<script>
+// ── Supabase config ──
+const SUPABASE_URL = 'https://nuezzbecqjxqqeafaraq.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im51ZXp6YmVjcWp4cXFlYWZhcmFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0MTc2NjksImV4cCI6MjA5Mzk5MzY2OX0.zJxbPwBhWn6m_vKtbfK8BoPWAmFkx81rsjGzRyipF9I';
+
+// ── Role selection ──
+const selectedRole = { hero: null, final: null };
+
+function selectRole(form, role) {
+  selectedRole[form] = role;
+  document.querySelectorAll('#' + form + '-role .role-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.role === role);
+  });
+}
+
+// ── Scroll reveal ──
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => obs.observe(el));
+
+// ── Waitlist submission ──
+async function joinWaitlist(form) {
+  const nameEl  = document.getElementById(form + '-name');
+  const emailEl = document.getElementById(form + '-email');
+  const name    = nameEl.value.trim();
+  const email   = emailEl.value.trim();
+  const role    = selectedRole[form];
+
+  if (!name)  { nameEl.focus(); nameEl.style.borderColor = 'var(--rose)'; return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailEl.focus(); emailEl.style.borderColor = 'var(--rose)'; return;
+  }
+
+  const btn = document.querySelector('#' + form + '-form .btn-primary, #' + form + '-form .btn-white');
+  if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/waitlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ name, email, role })
+    });
+
+    if (res.ok || res.status === 201) {
+      document.getElementById(form + '-form').style.display = 'none';
+      document.getElementById(form + '-success').style.display = 'block';
+    } else if (res.status === 409) {
+      // email already exists
+      emailEl.style.borderColor = 'var(--rose)';
+      emailEl.placeholder = 'This email is already on the list ✓';
+      emailEl.value = '';
+      if (btn) { btn.textContent = form === 'hero' ? 'Request my invite →' : 'Get my invite'; btn.disabled = false; }
+    } else {
+      throw new Error('Server error ' + res.status);
+    }
+  } catch (err) {
+    console.error(err);
+    if (btn) { btn.textContent = 'Try again'; btn.disabled = false; }
+    alert('Something went wrong. Please try again.');
+  }
+}
+</script>
+
+</body>
+</html>

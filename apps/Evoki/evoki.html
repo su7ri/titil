@@ -35,6 +35,7 @@ body {
   color: var(--dark);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  font-size: 17px;
 }
 
 /* ── NAV ── */
@@ -128,7 +129,7 @@ h1.hero-title em {
   line-height: 1.4;
 }
 .hero-sub {
-  font-size: 16px; font-weight: 300; line-height: 1.75;
+  font-size: 18px; font-weight: 300; line-height: 1.75;
   color: var(--muted); max-width: 440px; margin-bottom: 48px;
 }
 
@@ -288,7 +289,7 @@ h1.hero-title em {
   color: white; margin-bottom: 8px;
 }
 .principle-desc {
-  font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55);
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.55);
   line-height: 1.7;
 }
 
@@ -320,7 +321,7 @@ h1.hero-title em {
   letter-spacing: -0.03em;
 }
 .stat-label {
-  font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.5;
+  font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.5;
 }
 .stat-source {
   font-size: 10px; color: rgba(122,119,112,0.6); margin-top: 6px;
@@ -374,7 +375,7 @@ h1.hero-title em {
   color: var(--dark); margin-bottom: 12px; line-height: 1.2;
 }
 .feat-desc {
-  font-size: 14px; font-weight: 300; color: var(--muted);
+  font-size: 16px; font-weight: 300; color: var(--muted);
   line-height: 1.75; flex: 1;
 }
 
@@ -415,13 +416,13 @@ h1.hero-title em {
   line-height: 1.15; margin-bottom: 20px; color: var(--dark);
 }
 .role-subtitle {
-  font-size: 14px; font-weight: 300; color: var(--muted);
+  font-size: 16px; font-weight: 300; color: var(--muted);
   line-height: 1.6; margin-bottom: 28px;
 }
 .role-features { display: flex; flex-direction: column; gap: 10px; }
 .role-feature {
   display: flex; align-items: flex-start; gap: 12px;
-  font-size: 13px; font-weight: 300; color: var(--dark); line-height: 1.5;
+  font-size: 15px; font-weight: 300; color: var(--dark); line-height: 1.5;
 }
 .role-feature::before {
   content: '→'; font-size: 13px; flex-shrink: 0; margin-top: 1px;
@@ -454,7 +455,7 @@ h1.hero-title em {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--teal); flex-shrink: 0; margin-top: 5px;
 }
-.source-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.5; }
+.source-text { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.5; }
 .source-text strong { font-weight: 500; color: var(--dark); }
 
 /* ── FINAL CTA ── */
@@ -583,8 +584,8 @@ footer {
 .phone-frame:hover { transform: translateY(-8px) scale(1.02); }
 .phone-notch {
   position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-  width: 80px; height: 26px;
-  background: #1C1C1E; border-radius: 0 0 18px 18px;
+  width: 72px; height: 22px;
+  background: #1C1C1E; border-radius: 0 0 14px 14px;
   z-index: 10;
 }
 .phone-screen {
@@ -595,8 +596,12 @@ footer {
 }
 .phone-screen img {
   width: 100%; height: 100%;
-  object-fit: cover; object-position: top;
+  object-fit: cover;
+  object-position: top center;
   display: block;
+  /* فاصله از بالا — notch حدود 30px از top screen هست */
+  padding-top: 32px;
+  box-sizing: border-box;
 }
 /* Placeholder shown when src is not set */
 .phone-screen .ph {
@@ -670,23 +675,10 @@ footer {
     <div class="hero-eyebrow">Early Access · Limited Spots</div>
     <h1 class="hero-title">Meet<br><em>Evoki</em></h1>
     <p class="hero-tagline">Stay sharp. Stay connected. Stay you.</p>
-    <p class="hero-sub">A calm daily companion for cognitive wellness — designed for adults 50+, built so family can stay close without hovering. Coming 2026 on iOS & Android.</p>
+    <p class="hero-sub">A calm daily companion for cognitive wellness — made for adults 50+, so family can feel close without getting in the way. Coming 2026 on iOS & Android.</p>
 
-    <div id="hero-form">
-      <div class="form-row">
-        <input type="text" id="hero-name" placeholder="Your first name" autocomplete="given-name">
-        <input type="email" id="hero-email" placeholder="Your email address" autocomplete="email">
-        <div class="role-toggle" id="hero-role">
-          <button class="role-btn" data-role="senior" onclick="selectRole('hero','senior')">👤 I'm a senior</button>
-          <button class="role-btn" data-role="family" onclick="selectRole('hero','family')">👨‍👩‍👧 I'm a family member</button>
-        </div>
-        <button class="btn-primary" onclick="joinWaitlist('hero')">Request my invite →</button>
-      </div>
-      <p class="form-note">No spam. Just a personal invite when we're ready.</p>
-    </div>
-    <div class="success-msg" id="hero-success">
-      You're on the list. We'll reach out personally when we're ready for you.
-    </div>
+    <a href="#join" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;width:fit-content;">Request my invite →</a>
+    <p class="form-note" style="margin-top:12px;">No spam. Just a personal invite when we're ready.</p>
   </div>
 
   <div class="hero-right">
@@ -700,14 +692,14 @@ footer {
           </div>
         </div>
         <div class="preview-card-body">How did you sleep? How are you feeling today? Five gentle questions to start the day with clarity.</div>
-        <div class="preview-why">✦ &nbsp; Science-backed · Lancet Commission 2024</div>
+        <div class="preview-why">✦ &nbsp; Science-backed</div>
       </div>
       <div class="preview-card">
         <div class="preview-card-header">
           <div class="preview-icon">🧩</div>
           <div>
             <div class="preview-card-title">Today's Plan</div>
-            <div class="preview-card-sub">AI-generated · 3 activities</div>
+            <div class="preview-card-sub">Personalised · 3 activities</div>
           </div>
         </div>
         <div class="preview-card-body">Brain exercise · A gentle 10-min walk · Reach out to someone. Every task shows its "why" rooted in research.</div>
@@ -736,7 +728,7 @@ footer {
       <h2 class="section-title" style="margin-bottom:0;">Calm by design.<br>Every screen.</h2>
     </div>
     <p style="font-size:14px;font-weight:300;color:var(--muted);max-width:280px;line-height:1.6;">
-      Large type, high contrast, one action at a time — designed for the people who matter most.
+      Clear text, warm colours, one thing at a time — designed for the people who matter most.
     </p>
   </div>
 
@@ -825,7 +817,7 @@ footer {
           <div class="ph" style="display:none">
             <div class="ph-icon">💌</div>
             <div class="ph-label">Family · Messages</div>
-            <div class="ph-desc">AI-suggested messages or write your own.</div>
+            <div class="ph-desc">Thoughtful message suggestions — or write your own words.</div>
           </div>
         </div>
       </div>
@@ -928,7 +920,7 @@ footer {
         <div class="principle">
           <div class="principle-num">Principle 03</div>
           <div class="principle-title">Senior-first, always</div>
-          <div class="principle-desc">Large type. High contrast. Big tap targets. Designed for eyes that deserve more space, and fingers that deserve bigger targets.</div>
+          <div class="principle-desc">Clear, large text. High contrast. Generous tap areas. Because everything in Evoki is designed to feel effortless — no squinting, no fumbling.</div>
         </div>
       </div>
     </div>
@@ -977,13 +969,13 @@ footer {
       <div class="feat-tag">For family</div>
       <div class="feat-icon">📋</div>
       <div class="feat-title">Today's Plan</div>
-      <div class="feat-desc">An AI-generated daily plan: brain exercise, movement, and a moment of connection — each with its scientific "why" explained clearly.</div>
+      <div class="feat-desc">An brain exercise, a gentle walk, and a moment of connection — three things to look forward to. Each with a simple explanation of why it helps.</div>
     </div>
     <div class="feat-card">
       <div class="feat-tag">For family</div>
       <div class="feat-icon">💬</div>
       <div class="feat-title">Family Messages</div>
-      <div class="feat-desc">Send messages from the family app. AI-suggested prompts or free-write. Read before bed — a goodnight from Sarah. Connected, not hovering.</div>
+      <div class="feat-desc">Send messages from the family app. Thoughtful prompts or free-write. Read before bed — a goodnight from Sarah. Connected, not hovering.</div>
     </div>
     <div class="feat-card">
       <div class="feat-tag">Memory & care</div>
@@ -1009,11 +1001,11 @@ footer {
       <div class="role-card senior">
         <div class="role-persona">Senior · Lisa, 74 · Birmingham</div>
         <div class="role-title">Simple by default.<br>Calm every day.</div>
-        <div class="role-subtitle">Lisa opens Evoki each morning. Large type, high contrast, one clear action per screen. No learning curve, no overwhelm.</div>
+        <div class="role-subtitle">Lisa opens Evoki each morning. Everything is clear, calm, and easy to read. One action per screen. No learning curve, no overwhelm.</div>
         <div class="role-features">
           <div class="role-feature">Daily Check-In in about one minute</div>
           <div class="role-feature">Brain games, Evoki Radio, journaling</div>
-          <div class="role-feature">AI-generated Today's Plan with "why"</div>
+          <div class="role-feature">Today's Plan with "why"</div>
           <div class="role-feature">Orange Help button always visible</div>
           <div class="role-feature">Two modes: Just Today · Full Home</div>
         </div>
@@ -1026,7 +1018,7 @@ footer {
           <div class="role-feature">Today tab with check-in result</div>
           <div class="role-feature">Weekly mood summaries & trends</div>
           <div class="role-feature">Medication & reminder management</div>
-          <div class="role-feature">AI-suggested messages to send</div>
+          <div class="role-feature">Thoughtful messages to send</div>
           <div class="role-feature">Caregiver articles + research feed</div>
         </div>
       </div>
@@ -1094,32 +1086,6 @@ footer {
 
 
 <!-- FINAL CTA -->
-<section class="final-cta" id="join">
-  <div class="final-inner">
-    <div class="final-eyebrow">Early Access · Personal Invite</div>
-    <h2>You're<br><em>invited.</em></h2>
-    <p>We're opening early access to a small group of families. Leave your details and we'll reach out personally — no automated emails, no spam.</p>
-
-    <div id="final-form">
-      <div class="final-form">
-        <input type="text" id="final-name" placeholder="Your first name" autocomplete="given-name">
-        <input type="email" id="final-email" placeholder="Your email address" autocomplete="email">
-        <div class="role-toggle role-toggle-light" id="final-role">
-          <button class="role-btn" data-role="senior" onclick="selectRole('final','senior')">👤 I'm a senior</button>
-          <button class="role-btn" data-role="family" onclick="selectRole('final','family')">👨‍👩‍👧 I'm a family member</button>
-        </div>
-        <button class="btn-white" onclick="joinWaitlist('final')">Get my invite</button>
-      </div>
-      <p class="final-note">iOS & Android · Coming 2026 · 7 languages: EN · فارسی · ES · العربية · हिन्दी · 中文 · FR</p>
-    </div>
-    <div class="final-success" id="final-success">
-      Wonderful. We'll reach out with your personal invite soon.
-    </div>
-  </div>
-</section>
-
-
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Evoki</div>

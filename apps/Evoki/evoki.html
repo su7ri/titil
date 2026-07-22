@@ -257,6 +257,9 @@ h1.hero-title em { font-style: italic; font-weight: 300; color: var(--teal); }
 .feat-card:nth-child(4) .feat-tag { background: var(--rose-light); color: var(--rose); }
 .feat-card:nth-child(5) .feat-tag { background: var(--gold-light); color: var(--gold); }
 .feat-card:nth-child(6) .feat-tag { background: var(--gold-light); color: var(--gold); }
+.feat-card:nth-child(7) .feat-tag { background: var(--teal-light); color: var(--teal); }
+.feat-card:nth-child(8) .feat-tag { background: var(--rose-light); color: var(--rose); }
+.feat-card:nth-child(9) .feat-tag { background: var(--gold-light); color: var(--gold); }
 .feat-icon { font-size: 28px; margin-bottom: 16px; }
 .feat-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--dark); margin-bottom: 12px; line-height: 1.2; }
 .feat-desc { font-size: 16px; font-weight: 300; color: var(--muted); line-height: 1.75; flex: 1; }
@@ -316,6 +319,7 @@ footer { background: var(--dark); padding: 44px 56px; display: flex; align-items
 .footer-tagline { font-family: var(--serif); font-style: italic; font-size: 14px; color: rgba(255,255,255,0.4); }
 .footer-langs { display: flex; gap: 8px; flex-wrap: wrap; }
 .footer-langs span { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; padding: 4px 10px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1); }
+.footer-a11y { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.04em; margin-top: 8px; }
 
 /* ── SCREENSHOT SHOWCASE ── */
 .showcase { padding: 100px 0 100px 56px; overflow: hidden; background: var(--bg); border-top: 1px solid var(--border); }
@@ -481,14 +485,14 @@ footer { background: var(--dark); padding: 44px 56px; display: flex; align-items
       <div class="stat-source">WHO, 2023</div>
     </div>
     <div class="stat-item">
+      <div class="stat-num">1 in 3</div>
+      <div class="stat-label">seniors reports feeling lonely at least once a week — loneliness accelerates decline like smoking 15 cigarettes a day</div>
+      <div class="stat-source">Age UK / Holt-Lunstad</div>
+    </div>
+    <div class="stat-item">
       <div class="stat-num">40%</div>
       <div class="stat-label">of dementia cases are potentially preventable with the right daily habits</div>
       <div class="stat-source">Lancet Commission, 2024</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">1 in 3</div>
-      <div class="stat-label">seniors reports feeling lonely at least once a week</div>
-      <div class="stat-source">Age UK</div>
     </div>
   </div>
 </div>
@@ -499,11 +503,14 @@ footer { background: var(--dark); padding: 44px 56px; display: flex; align-items
   <h2 class="section-title">A gentle structure<br>for every day.</h2>
   <div class="features-grid">
     <div class="feat-card"><div class="feat-tag">For seniors</div><div class="feat-icon">☀️</div><div class="feat-title">Daily Check-In</div><div class="feat-desc">Five calm questions about mood, sleep, and energy. About one minute. Wearable auto-fill available. Never intrusive, always gentle.</div></div>
-    <div class="feat-card"><div class="feat-tag">For seniors</div><div class="feat-icon">🧠</div><div class="feat-title">Brain Games & Radio</div><div class="feat-desc">10 gentle cognitive games — no scores, no competition. Evoki Radio plays 3 curated channels with 50 licensed tracks for any moment.</div></div>
+    <div class="feat-card"><div class="feat-tag">For seniors</div><div class="feat-icon">🧠</div><div class="feat-title">Brain Games & Radio</div><div class="feat-desc">20 gentle cognitive games — no scores, no competition. Evoki Radio plays 3 curated channels with 50 licensed tracks for any moment.</div></div>
     <div class="feat-card"><div class="feat-tag">For family</div><div class="feat-icon">📋</div><div class="feat-title">Today's Plan</div><div class="feat-desc">Brain exercise, a gentle walk, and a moment of connection — three things to look forward to. Each with a simple explanation of why it helps.</div></div>
-    <div class="feat-card"><div class="feat-tag">For family</div><div class="feat-icon">💬</div><div class="feat-title">Family Messages</div><div class="feat-desc">Send messages from the family app. Thoughtful prompts or free-write. Read before bed — a goodnight from Sarah. Connected, not hovering.</div></div>
-    <div class="feat-card"><div class="feat-tag">Memory & care</div><div class="feat-icon">📓</div><div class="feat-title">Memory Bank</div><div class="feat-desc">A personal journal with guided prompts. People, places, events, and routines — a living record of the things that matter most.</div></div>
-    <div class="feat-card"><div class="feat-tag">Memory & care</div><div class="feat-icon">📊</div><div class="feat-title">Weekly Insights</div><div class="feat-desc">Family sees weekly check-in summaries, mood patterns, and gentle flags — shown calmly, never alarmingly. Peace of mind at a glance.</div></div>
+    <div class="feat-card"><div class="feat-tag">For family</div><div class="feat-icon">💬</div><div class="feat-title">Family Messages</div><div class="feat-desc">Send messages from the family app — AI-suggested or free-write. Read before bed — a goodnight from Sarah. Connected, not hovering.</div></div>
+    <div class="feat-card"><div class="feat-tag">Memory & care</div><div class="feat-icon">📓</div><div class="feat-title">Memory Bank</div><div class="feat-desc">A personal journal with guided prompts across five tabs — Journal, People, Places, Events, Routines — a living record of the things that matter most.</div></div>
+    <div class="feat-card"><div class="feat-tag">Memory & care</div><div class="feat-icon">📊</div><div class="feat-title">Weekly Insights</div><div class="feat-desc">Family sees weekly check-in summaries, mood patterns, and gentle flags — plus sleep, steps, and heart rate from a connected wearable. Shown calmly, never alarmingly.</div></div>
+    <div class="feat-card"><div class="feat-tag">For seniors</div><div class="feat-icon">🌗</div><div class="feat-title">Simple Mode & Full Home</div><div class="feat-desc">One tap in Settings switches between a single essentials screen for harder days and the full daily rhythm for good ones. No explanation needed.</div></div>
+    <div class="feat-card"><div class="feat-tag">For family</div><div class="feat-icon">💊</div><div class="feat-title">Medication Safety</div><div class="feat-desc">Family sets the schedule once — dosage, instructions, pill colour, alarm times. The senior only ever sees a simple reminder: Mark taken or Skip.</div></div>
+    <div class="feat-card"><div class="feat-tag">Memory & care</div><div class="feat-icon">🧡</div><div class="feat-title">Always-There Help</div><div class="feat-desc">A teal Help button lives on every screen. One tap opens a calming breath, a direct call to family, and emergency services — never far away.</div></div>
   </div>
 </section>
 
@@ -600,8 +607,11 @@ footer { background: var(--dark); padding: 44px 56px; display: flex; align-items
 <footer>
   <div class="footer-logo">Evoki</div>
   <div class="footer-tagline">"Calm. Dignified. Never overwhelming."</div>
-  <div class="footer-langs">
-    <span>EN</span><span>فارسی</span><span>ES</span><span>العربية</span><span>हिन्दी</span><span>中文</span><span>FR</span>
+  <div>
+    <div class="footer-langs">
+      <span>EN</span><span>فارسی</span><span>ES</span><span>العربية</span><span>हिन्दी</span><span>中文</span><span>FR</span>
+    </div>
+    <div class="footer-a11y">RTL ready · WCAG AA accessible · Larger text · High contrast · Reduce motion</div>
   </div>
 </footer>
 
